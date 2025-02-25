@@ -1,0 +1,9 @@
+# Lesson 9: Dictionaries
+
+## Objectives:
+- Understand how dictionaries store key-value pairs.
+- Learn how to access, add, and modify dictionary elements.
+- Explore dictionary methods for data manipulation.
+
+## Overview:
+Dictionaries provide an efficient way to store and retrieve data using keys. This lesson covers creating dictionaries, accessing values, and modifying dictionary content.

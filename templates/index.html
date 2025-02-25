@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Welcome to Flask LMS{% endblock %}
+
+{% block content %}
+<div class="landing">
+    <h1>Welcome to the Python LMS</h1>
+    <p>Start learning Python interactively.</p>
+    <a href="{{ url_for('auth.register') }}" class="btn">Register</a>
+    <a href="{{ url_for('auth.login') }}" class="btn">Login</a>
+</div>
+{% endblock %}

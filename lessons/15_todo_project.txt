@@ -1,0 +1,9 @@
+# Lesson 15: Creating a To-Do List
+
+## Objectives:
+- Learn how to manage a list of tasks.
+- Use lists and functions to organize data.
+- Implement basic user interaction.
+
+## Overview:
+This lesson covers building a to-do list program where users can add, remove, and view tasks.

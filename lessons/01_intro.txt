@@ -1,0 +1,9 @@
+# Lesson 1: Introduction to Python
+
+## Objectives:
+- Understand what Python is and why it is popular.
+- Learn how to install Python and set up your environment.
+- Write and run your first Python program.
+
+## Overview:
+Python is a widely used programming language known for its simplicity and readability. It is used in web development, data science, automation, and more. In this lesson, you will learn how to install Python, write your first script, and execute it.

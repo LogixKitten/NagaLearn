@@ -1,0 +1,9 @@
+# Lesson 10: Sets & Tuples
+
+## Objectives:
+- Learn the difference between sets and tuples.
+- Understand when to use sets vs. lists.
+- Explore the immutability of tuples.
+
+## Overview:
+Sets store unique values, while tuples provide immutable sequences. This lesson explains the differences and their applications in Python.

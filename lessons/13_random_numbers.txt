@@ -1,0 +1,9 @@
+# Lesson 13: Working with Random Numbers
+
+## Objectives:
+- Generate random numbers in Python.
+- Use the `random` module for simulations.
+- Understand the importance of randomness in programming.
+
+## Overview:
+The `random` module allows programs to generate unpredictable values. This lesson introduces functions like `randint()`, `choice()`, and `shuffle()`.

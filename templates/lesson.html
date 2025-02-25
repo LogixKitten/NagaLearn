@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block content %}
+<div class="lesson-container">
+    <h2>{{ lesson.title }}</h2>
+
+    <div class="lesson-content">
+        {{ content | safe }}
+    </div>
+
+    {% if lesson.id in progress_dict and progress_dict[lesson.id].completed %}
+        <!-- Show disabled green button for completed lessons -->
+        <button class="btn lesson-completed" disabled>Lesson Completed!</button>
+    {% else %}
+        <!-- Show "Mark as Complete" button for incomplete lessons -->
+        <form action="{{ url_for('lessons.complete_lesson', lesson_id=lesson.id) }}" method="post">
+            <button type="submit" class="btn">Mark as Complete</button>
+        </form>
+    {% endif %}
+
+    <a href="{{ url_for('lessons.view_lessons') }}" class="btn">Back to Lessons</a>
+</div>
+{% endblock %}

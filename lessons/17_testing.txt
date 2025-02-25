@@ -1,0 +1,9 @@
+# Lesson 17: Writing Test Cases
+
+## Objectives:
+- Understand the importance of testing in programming.
+- Learn how to write basic test cases using assertions.
+- Ensure your code runs correctly before deployment.
+
+## Overview:
+Testing helps prevent bugs and improves code reliability. This lesson covers writing basic test cases using Python’s built-in assertion statements.

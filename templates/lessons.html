@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Lessons{% endblock %}
+
+{% block content %}
+<h2>Lesson Path</h2>
+<div class="lesson-path">
+    {% for lesson in lessons %}
+        {% set progress = progress_dict.get(lesson.id, None) %}
+        
+        {% if lesson.id == 1 or progress_dict.get(lesson.id - 1, None) %}
+            {% set unlocked = True %}
+        {% else %}
+            {% set unlocked = False %}
+        {% endif %}
+
+        <div class="lesson-box">
+            {% if progress and progress.completed %}
+                <a href="{{ url_for('lessons.view_lesson', lesson_id=lesson.id) }}" class="lesson-btn completed">
+                    {{ lesson.title }}
+                </a>
+            {% elif unlocked %}
+                <a href="{{ url_for('lessons.view_lesson', lesson_id=lesson.id) }}" class="lesson-btn unlocked">
+                    {{ lesson.title }}
+                </a>
+            {% else %}
+                <button class="lesson-btn locked" disabled>
+                    <span class="lock-icon">🔒</span> {{ lesson.title }}
+                </button>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
