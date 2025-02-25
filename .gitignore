@@ -1,0 +1,23 @@
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environment (venv)
+venv/
+env/
+
+# Ignore database reset scripts (if not needed in production)
+reset_db.py
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE settings (VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+
+# Ignore log files
+*.log
+logs/
