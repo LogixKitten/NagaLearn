@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Lesson {{ lesson_id }}: Hands-on Exercises</h2>
+    <p>Complete the following exercises by running the Python code directly in your browser.</p>
+
+    {% for exercise in exercises %}
+    <div class="exercise-box">
+        <p><strong>Exercise {{ exercise.id }}:</strong> {{ exercise.question }}</p>
+        <textarea id="code_{{ exercise.id }}" class="code-area"></textarea>
+        <button onclick="runCode(`{{ exercise.id }}`, `{{ exercise.solution|e }}`)">Run Code</button>
+        <p id="output_{{ exercise.id }}" class="output"></p>
+    </div>
+    {% endfor %}
+
+    <button id="complete-lesson-btn" onclick="markLessonComplete('{{ lesson_id }}')" disabled>Complete Lesson</button>
+
+<script>
+    window.runCode = async function (exerciseId, correctSolution) {
+    let userCode = document.getElementById(`code_${exerciseId}`).value;
+    let outputElement = document.getElementById(`output_${exerciseId}`);
+
+    try {
+        // Ensure Pyodide is loaded
+        if (!window.pyodide) {
+            window.pyodide = await loadPyodide();
+        }
+
+        // Safely escape user input
+        let escapedCode = JSON.stringify(userCode);
+
+        // Python script to execute user code & validate solution
+        let captureOutputCode = `
+import sys
+from io import StringIO
+
+sys.stdout = StringIO()  # Redirect stdout to capture print statements
+user_globals = {}  # Execution scope for user code
+
+try:
+    exec(${escapedCode}, user_globals)  # Execute user input safely
+    output = sys.stdout.getvalue().strip()  # Capture printed output
+    user_globals["output"] = output  # Store output in execution scope
+    sys.stdout = sys.__stdout__  # Restore stdout
+    if not output:
+        output = "No output produced"
+except Exception as e:
+    output = f"Error: {str(e)}"
+    user_globals["output"] = output  # Store error output as well
+
+# Evaluate solution dynamically within the same execution scope
+def check_solution():
+    try:
+        return eval(${JSON.stringify(correctSolution)}, user_globals)  # Evaluate within user scope
+    except Exception as e:
+        return False  # Return False if an error occurs
+
+is_correct = check_solution()
+`;
+
+        // Run user code and capture output
+        await window.pyodide.runPythonAsync(captureOutputCode);
+
+        // Get captured output
+        let userOutput = await window.pyodide.runPythonAsync("output");
+
+        // Get the result of correctness check
+        let isCorrect = await window.pyodide.runPythonAsync("is_correct");
+
+        // ✅ Debugging Log
+        console.log("is_correct:", isCorrect);
+
+        // ✅ Update Output Based on Validation
+        outputElement.innerHTML = `<strong>Output:</strong> ${userOutput}<br>`;
+        outputElement.style.color = "black"; // Reset default color
+
+        if (isCorrect === true || isCorrect === "True" || isCorrect === "1") {
+            outputElement.innerHTML += "✅ Correct!";
+            outputElement.style.color = "green";
+        } else {
+            outputElement.innerHTML += "❌ Incorrect!";
+            outputElement.style.color = "red";
+        }
+
+        checkAllExercisesCompleted();
+    } catch (error) {
+        outputElement.style.color = "red";
+        outputElement.innerHTML = `<strong>Error:</strong> ${error.message}`;
+        console.error("Pyodide Execution Error:", error);
+    }
+};
+
+    async function checkAllExercisesCompleted() {
+        let allCorrect = true;
+        document.querySelectorAll(".output").forEach(output => {
+            if (!output.innerHTML.includes("✅ Correct!")) {
+                allCorrect = false;
+            }
+        });
+
+        document.getElementById("complete-lesson-btn").disabled = !allCorrect;
+    }
+
+    function markLessonComplete(lessonId) {
+        fetch(`/mark-lesson-complete/${lessonId}`, {
+            method: "POST"
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            window.location.href = "/lessons";
+        });
+    }
+</script>
+{% endblock %}

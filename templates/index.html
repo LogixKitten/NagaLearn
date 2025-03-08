@@ -1,9 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Welcome to Flask LMS{% endblock %}
+{% block title %}Welcome to NagaLearn{% endblock %}
 
 {% block content %}
-<div class="landing">
-    <h1>Welcome to the Python LMS</h1>
+<div class="landing">    
+    <img src="{{ url_for('static', filename='img/nagalearn_logo.png') }}" alt="NagaLearn Logo" class="logo">
+    <h1>Welcome to NagaLearn!</h1>
     <p>Start learning Python interactively.</p>
     <a href="{{ url_for('auth.register') }}" class="btn">Register</a>
     <a href="{{ url_for('auth.login') }}" class="btn">Login</a>

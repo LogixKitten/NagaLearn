@@ -1,0 +1,236 @@
+<br>
+
+## Objectives:
+- Understand what variables are and how they store data.
+- Learn about Python’s dynamic typing system.
+- Identify and use different data types in Python.
+- Perform basic operations with numbers and math operators.
+- Accept user input and perform string concatenation.
+- Understand how print statements work in Python.
+- Learn about Python's indentation rules and why they are important.
+- Use comments to document and explain code effectively.
+
+<br>
+
+## Overview:
+Python is a widely used programming language known for its simplicity and readability. It is used in web development, data science, automation, and more. In this lesson, you will learn about the basic syntax of Python, including variables, dynamic typing, data types, basic operations, print statements, indentation, and comments.
+
+<br>
+
+## Variables and Dynamic Typing
+A variable is a name that refers to a value stored in memory. In Python, variables do not require explicit declaration.
+
+<br>
+
+### Declaring Variables:
+```python
+name = "John"
+age = 25
+height = 5.6
+is_student = True
+```
+
+<br>
+
+Python is **dynamically typed**, meaning you do not have to specify variable types explicitly. The interpreter assigns types based on the value.
+
+<br>
+
+### Checking Data Types:
+```python
+print(type(name))   # Output: <class 'str'>
+print(type(age))    # Output: <class 'int'>
+print(type(height)) # Output: <class 'float'>
+print(type(is_student)) # Output: <class 'bool'>
+```
+
+<br>
+
+## Rules for Naming Variables
+- Can contain letters, numbers, and underscores.
+- Cannot start with a number.
+- Cannot use Python keywords (e.g., `if`, `while`, `return`).
+- Case-sensitive (`Age` and `age` are different variables).
+
+<br>
+
+### Valid and Invalid Declarations:
+```python
+valid_name = "John"  # Valid
+_name = "Doe"  # Valid
+2name = "Error"  # Invalid (cannot start with a number)
+first name = "Error"  # Invalid (no spaces allowed)
+```
+
+<br>
+
+## Print Statements in Python
+The `print()` function is used to display output in Python.
+
+<br>
+
+### Basic Print Statement:
+```python
+print("Hello, world!")
+```
+**Output:**
+```text
+Hello, world!
+```
+
+<br>
+
+Python allows **printing multiple values** using commas, which automatically inserts spaces between them.
+
+<br>
+
+### Printing Multiple Values:
+```python
+name = "John Doe"
+age = 21
+print("My name is", name, "and I am", age, "years old.")
+```
+**Output:**
+```text
+My name is John Doe and I am 21 years old.
+```
+
+<br>
+
+### String Concatenation:
+```python
+first_name = "Mark"
+last_name = "Johnson"
+age = 34
+greeting = "My name is " + first_name + " " + last_name + " and I am " + age + " years old."
+print("Mark:", greeting)
+```
+**Output:**
+```text
+Mark: My name is Mark Johnson and I am 34 years old.
+```
+
+<br>
+
+### Using f-strings for More Readable Output:
+```python
+
+print(f"My name is {first_name} {last_name} and I am {age} years old.")
+```
+This method is cleaner and more efficient.
+
+<br>
+
+## User Input
+Python allows you to **accept user input** using the `input()` function.
+
+<br>
+
+### Getting User Input:
+```python
+name = input("Enter your name: ")
+print("Hello, " + name + "!")
+```
+
+<br>
+
+## Indentation in Python
+Python uses indentation (spaces or tabs at the beginning of a line) to define blocks of code. Unlike other programming languages that use {} or begin/end statements, Python requires consistent indentation.
+
+<br>
+
+### Correct Indentation Example:
+```python
+if True:
+    print("This is indented correctly.")  # 4 spaces are standard
+```
+<br>
+### Incorrect Indentation Example:
+This will **cause an error** because the second line is not indented.
+```python
+if True:
+print("This will cause an IndentationError!")  # No indentation
+```
+**Error Message:**
+```text
+IndentationError: expected an indented block
+```
+
+<br>
+
+## Comments in Python
+Comments help explain code and make it more readable. They are ignored by the Python interpreter.
+
+### Single-Line Comments (`#`):
+```python
+# This is a comment
+print("Hello, world!")  # This prints a message
+```
+<br>
+
+### Multi-Line Comments (`'''` or `"""`):
+While Python does not have a dedicated multi-line comment syntax, you can use triple quotes for multi-line comments, it is important to note that this is typically meant for Docstrings, but we will go into what those are in a future lesson. 
+This is how you can use multi-line comments:
+```python
+'''
+This is a multi-line comment.
+It spans multiple lines.
+'''
+print("Python is fun!")
+```
+
+<br>
+
+## Working with Numbers and Math Operators
+Python supports arithmetic operations such as addition, subtraction, multiplication, and division.
+<br>
+### Basic Arithmetic Operations:
+```python
+x = 10
+y = 3
+
+addition = x + y    # 13
+subtraction = x - y # 7
+multiplication = x * y # 30
+division = x / y    # 3.3333
+floor_div = x // y  # 3 (integer division)
+modulus = x % y     # 1 (remainder)
+exponent = x ** y   # 1000 (10^3)
+```
+<br>
+
+## Python Data Types
+Python provides several built-in data types:
+
+<br>
+
+| Data Type | Example |
+|-----------|---------|
+| Integer (int) | `x = 10` |
+| Floating Point (float) | `pi = 3.14` |
+| String (str) | `name = "Python"` |
+| Boolean (bool) | `is_active = True` |
+| List (list) | `fruits = ["apple", "banana", "cherry"]` |
+| Tuple (tuple) | `coordinates = (10, 20)` |
+| Dictionary (dict) | `student = {"name": "Alice", "age": 21}` |
+
+<br>
+
+## Type Conversion
+Python allows converting between data types using built-in functions.
+
+<br>
+
+### Converting Integer to Float:
+```python
+a = 10
+b = float(a)  # Converts integer to float
+print(b)  # Output: 10.0
+```
+
+### Converting String to Integer:
+```python
+c = "100"
+d = int(c)  # Converts string to integer
+print(d)  # Output: 100
+```

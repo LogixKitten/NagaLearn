@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Flask LMS{% endblock %}</title>
+    <title>{% block title %}NagaLearn{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
 </head>
 <body>
     <nav>
@@ -32,5 +32,82 @@
 
         {% block content %}{% endblock %}
     </div>
+
+    <!-- Cursor Script -->
+    <script>
+        document.querySelectorAll('input[type="text"], input[type="password"], textarea').forEach(input => {
+            let cursor = document.createElement("span");
+            cursor.classList.add("blinking-cursor");
+            cursor.innerHTML = "█";
+            cursor.style.position = "absolute";
+            cursor.style.pointerEvents = "none";
+            cursor.style.color = "#00ff3c";
+            cursor.style.display = "none"; // Hide initially
+        
+            document.body.appendChild(cursor);
+        
+            // Store original placeholder
+            input.dataset.placeholder = input.placeholder;
+        
+            function updateCursorPosition() {
+                const rect = input.getBoundingClientRect();
+                const inputStyle = window.getComputedStyle(input);
+                const fontSize = parseFloat(inputStyle.fontSize);
+                const caretPos = input.selectionStart;
+                const textBeforeCaret = input.value.substring(0, caretPos);
+        
+                // Create a temporary span to measure text width
+                let tempSpan = document.createElement("span");
+                tempSpan.style.font = inputStyle.font;
+                tempSpan.style.whiteSpace = "pre";
+                tempSpan.style.visibility = "hidden";
+                tempSpan.textContent = textBeforeCaret.replace(/ /g, "\u00A0");
+                document.body.appendChild(tempSpan);
+        
+                // Calculate new cursor position
+                const textWidth = tempSpan.offsetWidth;
+                tempSpan.remove();
+        
+                cursor.style.left = `${rect.left + textWidth + parseFloat(inputStyle.paddingLeft)}px`;
+                cursor.style.top = `${rect.top + (rect.height - fontSize) / 2}px`;
+            }
+        
+            input.addEventListener("input", updateCursorPosition);
+            input.addEventListener("keydown", updateCursorPosition);
+            input.addEventListener("click", updateCursorPosition);
+            input.addEventListener("focus", () => {
+                cursor.style.display = "inline-block";
+                updateCursorPosition();
+                input.placeholder = ""; // Remove placeholder on focus
+            });
+            input.addEventListener("blur", () => {
+                cursor.style.display = "none"; // Hide cursor when out of focus
+                if (!input.value) input.placeholder = input.dataset.placeholder; // Restore placeholder if empty
+            });
+        });
+        
+        // Remove extra blinking cursor issue by cleaning up orphaned spans
+        document.querySelectorAll('.blinking-cursor').forEach(cursor => {
+            if (!cursor.previousElementSibling) {
+                cursor.remove();
+            }
+        });
+        
+        /* Blinking cursor animation */
+        const style = document.createElement("style");
+        style.innerHTML = `
+            .blinking-cursor {
+                display: inline-block;
+                position: absolute;
+                animation: blink-cursor 0.8s infinite;
+            }
+        
+            @keyframes blink-cursor {
+                50% { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>        
+
 </body>
 </html>

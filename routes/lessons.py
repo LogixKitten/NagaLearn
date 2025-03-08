@@ -36,7 +36,7 @@ def view_lesson(lesson_id):
     progress = LessonProgress.query.filter_by(user_id=current_user.id).all()
     progress_dict = {p.lesson_id: p for p in progress}
 
-    return render_template("lesson.html", lesson=lesson, content=lesson_content, progress_dict=progress_dict)
+    return render_template("lesson.html", lesson=lesson, content=lesson_content, progress_dict=progress_dict, lesson_id=lesson.id)
 
 @lessons_bp.route("/complete_lesson/<int:lesson_id>", methods=["POST"])
 @login_required

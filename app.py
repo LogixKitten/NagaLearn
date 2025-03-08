@@ -5,6 +5,9 @@ from database import db
 from models.user import User
 from routes.auth import auth_bp
 from routes.lessons import lessons_bp
+from routes.quiz import quiz_bp
+from routes.exercises import exercises_bp
+
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "supersecretjenny8675309"
@@ -29,11 +32,11 @@ def home():
         return redirect(url_for("lessons.view_lessons"))  # Redirect logged-in users to lessons
     return render_template("index.html")  # Show landing page for guests
 
-# Register authentication blueprint
-app.register_blueprint(auth_bp, url_prefix="/auth")
 
-# Register lesson blueprint
+app.register_blueprint(auth_bp, url_prefix="/auth")
 app.register_blueprint(lessons_bp, url_prefix="/")
+app.register_blueprint(quiz_bp, url_prefix="/")
+app.register_blueprint(exercises_bp, url_prefix="/")
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -13,10 +13,7 @@
         <!-- Show disabled green button for completed lessons -->
         <button class="btn lesson-completed" disabled>Lesson Completed!</button>
     {% else %}
-        <!-- Show "Mark as Complete" button for incomplete lessons -->
-        <form action="{{ url_for('lessons.complete_lesson', lesson_id=lesson.id) }}" method="post">
-            <button type="submit" class="btn">Mark as Complete</button>
-        </form>
+        <button id="next-quiz-btn" onclick="window.location.href='/quiz/{{ lesson_id }}'">Next: Take the Quiz</button>
     {% endif %}
 
     <a href="{{ url_for('lessons.view_lessons') }}" class="btn">Back to Lessons</a>

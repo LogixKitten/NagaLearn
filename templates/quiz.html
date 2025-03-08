@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Lesson {{ lesson_id }}: Quiz</h2>
+    <p>Answer the following questions:</p>    
+        <form method="POST" action="{{ url_for('quiz.take_quiz', lesson_id=lesson_id) }}">
+            <div class="quizFormContainer">
+                <br>
+                {% for question in questions %}
+                <br>
+                <p><strong>{{ loop.index }}.</strong> {{ question.question_text | replace('\n', '<br>') | safe }}</p>
+        
+                {% if question.question_type == "multiple_choice" %}
+                    <label><input type="radio" name="question_{{ question.id }}" value="A"> {{ question.option_a }}</label><br>
+                    <label><input type="radio" name="question_{{ question.id }}" value="B"> {{ question.option_b }}</label><br>
+                    <label><input type="radio" name="question_{{ question.id }}" value="C"> {{ question.option_c }}</label><br>
+                    <label><input type="radio" name="question_{{ question.id }}" value="D"> {{ question.option_d }}</label><br>
+        
+                {% elif question.question_type == "true_false" %}
+                    <label><input type="radio" name="question_{{ question.id }}" value="True"> True</label><br>
+                    <label><input type="radio" name="question_{{ question.id }}" value="False"> False</label><br>
+        
+                {% elif question.question_type == "short_answer" %}
+                    <input type="text" name="question_{{ question.id }}">
+                {% endif %}
+                <br>
+                {% endfor %}
+            </div>
+            <br>
+            <button type="submit">Submit Quiz</button>            
+        </form>
+        <br>
+    <button id="next-lesson-btn" onclick="window.location.href='/exercises/{{ lesson_id }}'" disabled>Next: Hands-on Exercises</button>
+    <script>
+        // Enable Next button if user passed the quiz
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("script loaded");
+            const messages = document.querySelectorAll(".flash-messages p");
+            messages.forEach(message => {
+                if (message.textContent.includes("Quiz Passed")) {
+                    document.getElementById("next-lesson-btn").removeAttribute("disabled");
+                    console.log("Button Enabled");
+                }
+            });
+        });
+    </script>
+    {% endblock %}
+
+

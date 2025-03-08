@@ -1,50 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #000000;
+    color:#00ff3c;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
+code, pre {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 nav {
-    background-color: #007BFF;
+    background-color: #000000;
     padding: 10px;
 }
 
 nav a {
-    color: white;
+    color: #2a9f00;  /* Neon green text */
     text-decoration: none;
     margin: 10px;
     font-size: 18px;
+    font-family: 'Press Start 2P', cursive; /* Pixel font */
+    
+    /* Terminal-style button */
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #2a9f00; /* Green border */
+    background-color: black; /* Black background */
+    text-align: center;
+    transition: all 0.2s ease-in-out;
 }
 
-nav a:hover {
-    text-decoration: underline;
+/* Hover effect */
+nav a:hover {    
+    color: #00ff3c; /* Inverts text color */
+    border: 2px solid #00ff3c; /* Green border */
 }
+
 
 .container {
-    margin-top: 20px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    background: white;
+    margin-top: 20px;    
+    margin-left: 100px;
+    margin-right: 100px;
+    background: #000000;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px #000000;
 }
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
+    width: auto;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
     text-decoration: none;
-    border-radius: 5px;
-    margin: 5px;
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid #2a9f00; /* Green outline */
+    color: #2a9f00; /* Green text */
+    background-color: transparent; /* Transparent background */
+    transition: all 0.2s ease-in-out;
 }
 
+/* Hover effect to brighten the outline and text */
 .btn:hover {
-    background-color: #0056b3;
+    color: #00ff3c; /* Bright neon green text */
+    border: 2px solid #00ff3c; /* Bright neon green border */
+}
+
+.btn:disabled {
+    display: inline-block;
+    width: auto;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid #898989 !important;
+    color: #898989 !important;
+    background-color: transparent; 
+    transition: all 0.2s ease-in-out;
+    cursor: not-allowed;
 }
 
 input[type="text"], input[type="password"] {
@@ -56,18 +97,40 @@ input[type="text"], input[type="password"] {
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
+    display: inline-block;
+    width: 250px;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid #2a9f00; /* Green outline */
+    color: #2a9f00; /* Green text */
+    background-color: transparent; /* Transparent background */
+    transition: all 0.2s ease-in-out;
 }
 
+/* Hover effect to brighten the outline and text */
 button:hover {
-    background-color: #0056b3;
+    color: #00ff3c; /* Bright neon green text */
+    border: 2px solid #00ff3c; /* Bright neon green border */
+}
+
+button:disabled {
+    display: inline-block;
+    width: auto;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid #898989 !important;
+    color: #898989 !important;
+    background-color: transparent; 
+    transition: all 0.2s ease-in-out;
+    cursor: not-allowed;
 }
 
 .flash-messages {
@@ -106,43 +169,72 @@ button:hover {
 
 .lesson-btn {
     display: inline-block;
-    width: 250px;
+    width: auto;
     padding: 15px;
     font-size: 18px;
     text-align: center;
     text-decoration: none;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
     font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid #2a9f00; /* Green outline */
+    color: #2a9f00; /* Green text */
+    background-color: transparent; /* Transparent background */
+    transition: all 0.2s ease-in-out;
 }
 
-.completed {
-    background-color: #28a745;
-    color: white;
+/* Hover effect to brighten the outline and text */
+.lesson-btn:hover {
+    color: #00ff3c; /* Bright neon green text */
+    border: 2px solid #00ff3c; /* Bright neon green border */
 }
+
+/* Adjust colors for completed, unlocked, and locked states */
+.completed {
+    color: #f5eb39 !important; /* Yellow text */
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid #f5eb39 !important; /* Yellow outline */
+}
+
+
+.completed:hover {
+    color: #f5eb39 !important; /* Yellow text */
+    border: 2px solid #f5eb39 !important; /* Yellow outline */
+}
+
 
 .unlocked {
-    background-color: #007BFF;
-    color: white;
+    color: #00ff3c; /* Bright green text */
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid #00ff3c; /* Bright green outline */
 }
 
 .locked {
-    background-color: #6c757d;
-    color: white;
+    display: inline-block;
+    width: auto;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid #898989;
+    color: #898989;
+    background-color: transparent; 
+    transition: all 0.2s ease-in-out;
     cursor: not-allowed;
-    position: relative;
+}
+
+/* Hover effect to brighten the outline and text */
+.locked:hover {
+    color: #898989 !important;
+    border: 2px solid #898989 !important;
+    cursor: not-allowed;
 }
 
 .locked .lock-icon {
     position: absolute;
     left: 10px;
-    font-size: 20px;
-}
-
-.locked:hover {
-    background-color: #6c757d !important; /* Keep the grey color */
-    cursor: not-allowed;
+    font-size: 28px;
 }
 
 /* Lesson Content Styling */
@@ -153,7 +245,7 @@ button:hover {
     text-align: center;
     max-width: 80%;
     margin: 20px auto;
-    background: white;
+    background: rgb(0, 0, 0);
     padding: 20px;
     border-radius: 8px;    
 }
@@ -163,6 +255,7 @@ button:hover {
     max-width: 90%;
     margin: 0 auto;
     padding: 0; /* Remove extra padding that was causing nesting */
+    color:#00ff3c;
 }
 
 /* Ensure headers inside lesson content are not oversized */
@@ -210,19 +303,67 @@ button:hover {
 }
 
 .lesson-completed {
-    background-color: #28a745; /* Green background */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    display: inline-block;
+    width: auto;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
     font-weight: bold;
-    border-radius: 5px;
-    cursor: not-allowed;
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid #f5eb39;
+    color: #f5eb39;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
 }
 
-/* Prevent hover effects on the disabled button */
+/* Hover effect to brighten the outline and text */
 .lesson-completed:hover {
-    background-color: #28a745; /* Keep the same green color */
-    color: white; /* Ensure text color remains unchanged */
-    cursor: not-allowed; /* Prevent hover pointer */
+    color: #f5eb39;
+    border: 2px solid #f5eb39;
+}
+
+.quizFormContainer {
+    text-align: left;    
+}
+
+/* General styles for text, textarea, and password inputs */
+input[type="text"], 
+input[type="password"], 
+textarea {
+    background-color: black; /* Black background */
+    color: #00ff3c; /* Neon green text */
+    font-family: 'Press Start 2P', cursive; /* Pixel font */
+    font-size: 20px; /* Adjust for readability */
+    border: 2px solid #00ff3c; /* Neon green outline */
+    padding: 10px;
+    width: 100%; /* Full width */
+    outline: none; /* Remove default focus outline */
+    caret-color: transparent; /* Hide default cursor */
+    position: relative; /* Required for JS-based cursor */
+}
+
+/* Remove default cursor blinking */
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+textarea:focus {
+    border-color: #00ff80; /* Lighter neon green when focused */
+}
+
+/* Special case for password input fields */
+input[type="password"] {
+    letter-spacing: 5px; /* Space out dots (optional) */
+    font-size: 25px; /* Bigger dots for visibility */
+}
+
+/* Remove broken pseudo-element cursor (handled by JS) */
+input[type="text"]::after, 
+input[type="password"]::after, 
+textarea::after {
+    content: none;
+}
+
+.logo {
+    height: 400px;
+    width: 400px;
 }

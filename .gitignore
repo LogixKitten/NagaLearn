@@ -6,6 +6,7 @@ __pycache__/
 # Ignore virtual environment (venv)
 venv/
 env/
+ignore/
 
 # Ignore database reset scripts (if not needed in production)
 reset_db.py
