@@ -1,9 +1,0 @@
-# Lesson 11: Importing Modules
-
-## Objectives:
-- Understand the importance of modules in Python.
-- Learn how to import built-in and custom modules.
-- Use `import`, `from`, and `as` keywords.
-
-## Overview:
-Python includes many built-in modules that extend functionality. This lesson introduces modules, how to import them, and best practices for using them.

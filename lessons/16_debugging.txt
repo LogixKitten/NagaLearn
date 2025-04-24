@@ -1,9 +1,0 @@
-# Lesson 16: Common Errors & Debugging
-
-## Objectives:
-- Identify common syntax and runtime errors.
-- Learn debugging techniques in Python.
-- Use print statements and debugging tools.
-
-## Overview:
-Debugging is an essential skill for programmers. This lesson introduces common errors and how to troubleshoot them effectively.

@@ -1,9 +1,0 @@
-# Lesson 4: Basic Math Operations
-
-## Objectives:
-- Perform basic arithmetic operations in Python.
-- Understand operator precedence.
-- Learn about integer and float division.
-
-## Overview:
-Python supports mathematical operations such as addition, subtraction, multiplication, and division. This lesson introduces arithmetic operations and how they are used in Python.

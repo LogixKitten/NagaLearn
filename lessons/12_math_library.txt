@@ -1,9 +1,0 @@
-# Lesson 12: Using the Math Library
-
-## Objectives:
-- Explore functions available in the `math` module.
-- Perform common mathematical calculations in Python.
-- Learn how to use constants like `pi` and `e`.
-
-## Overview:
-The `math` module provides functions for complex mathematical calculations. This lesson covers commonly used functions such as `sqrt()`, `ceil()`, and `floor()`.

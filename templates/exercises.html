@@ -7,7 +7,7 @@
     {% for exercise in exercises %}
     <div class="exercise-box">
         <p><strong>Exercise {{ exercise.id }}:</strong> {{ exercise.question }}</p>
-        <textarea id="code_{{ exercise.id }}" class="code-area"></textarea>
+        <textarea id="code_{{ exercise.id }}" class="code-area">{% if exercise.starter_code %}{{ exercise.starter_code }}{% endif %}</textarea>
         <button onclick="runCode(`{{ exercise.id }}`, `{{ exercise.solution|e }}`)">Run Code</button>
         <p id="output_{{ exercise.id }}" class="output"></p>
     </div>
@@ -36,6 +36,9 @@ from io import StringIO
 
 sys.stdout = StringIO()  # Redirect stdout to capture print statements
 user_globals = {}  # Execution scope for user code
+user_globals["number_list"] = [3, 8, 15, 2, 9, 10, 7, 4, 12, 5]
+user_globals["numbers"] = [4, 8, 15, 8, 23, 2, 4, 16, 15, 23, 8, 42, 7, 7, 3, 16, 23, 15, 8, 4]
+
 
 try:
     exec(${escapedCode}, user_globals)  # Execute user input safely

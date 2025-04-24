@@ -1,9 +1,0 @@
-# Lesson 2: Variables & Data Types
-
-## Objectives:
-- Learn how to declare and assign variables.
-- Understand different data types in Python.
-- Explore type conversion.
-
-## Overview:
-Variables store data values, and Python supports multiple data types, such as integers, floats, strings, and booleans. In this lesson, you will learn how to define variables and understand how data types work in Python.

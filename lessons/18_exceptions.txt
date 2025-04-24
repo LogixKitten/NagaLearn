@@ -1,9 +1,0 @@
-# Lesson 18: Handling Exceptions
-
-## Objectives:
-- Learn how to handle errors gracefully.
-- Use `try`, `except`, and `finally` blocks.
-- Prevent programs from crashing due to user input errors.
-
-## Overview:
-Python provides exception handling to deal with unexpected errors. This lesson introduces `try-except` blocks and best practices for handling errors.

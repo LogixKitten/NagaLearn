@@ -1,0 +1,338 @@
+## Python Data Structures
+
+### Introduction to Data Structures
+In Python, a data structure is a special way of organizing and storing data so it can be used efficiently in your programs. Data structures help you keep track of collections of information—whether it’s a list of names, a group of settings, or a set of unique items. Choosing the right data structure makes your code faster, easier to write, and simpler to understand.
+
+Some of the most important data structures in Python are **lists**, **dictionaries**, and **sets**. Each one is designed for different kinds of tasks:
+- **Lists** let you store things in order and change them as needed.
+- **Dictionaries** use “keys” to help you look up and organize information quickly.
+- **Sets** are great for storing unique items and checking if something is in your collection.
+
+In this unit, you’ll learn how these basic data structures work and how to use them to solve real-world programming problems.
+
+---
+
+## Lists
+A **list** in Python is a way to store a collection of items in a single variable. Lists are incredibly useful because they allow you to group related values together, keep them in order, and change them whenever you want. You can even store different types of data in the same list—numbers, strings, or even other lists!
+
+To create a list, you use square brackets and separate each item with a comma. For example, you could make a list of fruits like this:
+
+```python
+fruits = ["apple", "banana", "cherry"]
+```
+
+Lists can be empty, or have as many items as you need. Here are a few more examples:
+
+```python
+empty_list = []
+numbers = [1, 2, 3, 4]
+mixed = ["hello", 10, True]
+```
+
+You can access individual items in a list by their position, called the *index*. Remember, Python starts counting from zero. So `fruits[0]` gives you `"apple"`, and `fruits[-1]` gives you the last item in the list, `"cherry"`.
+
+Lists are also **changeable** (mutable), meaning you can update their contents. If you want to change the second fruit to `"orange"`, just do:
+
+```python
+fruits[1] = "orange"
+print(fruits)  # ['apple', 'orange', 'cherry']
+```
+
+Python lists come with lots of built-in functions that help you manage your data. For example, you can use `.append()` to add an item to the end, `.insert()` to put an item at a specific spot, `.remove()` to delete a specific value, or `.pop()` to remove an item by its index. You can even sort your list with `.sort()`, empty it out with `.clear()`, or join two lists together with the `+` operator:
+
+```python
+fruits.append("mango")
+fruits.remove("apple")
+numbers = [0, 1, 2, 3, 4]
+print(numbers[1:4])  # [1, 2, 3]
+```
+
+You can also **loop through a list** to work with each item, like printing them one at a time:
+
+```python
+for fruit in fruits:
+    print(fruit)
+```
+
+To find out if a certain item is in your list, use the `in` keyword:
+
+```python
+if "banana" in fruits:
+    print("Yes!")
+```
+
+If you want to know how many items you have, `len(list)` tells you the length.
+
+If you want just part of a list, you can use **slicing**. For example, `numbers[1:4]` will give you the items at positions 1, 2, and 3.
+
+Lists are one of Python’s most powerful and flexible features, letting you organize data, build collections, and work with information of any size.
+
+---
+
+## Dictionaries
+A **dictionary** is a powerful way to store and organize data. Unlike a list, which stores items by their position, a dictionary stores **pairs** of information: a *key* and its *value*. Think of it like a real-world dictionary—if you know the word (the key), you can quickly look up its meaning (the value).
+
+Dictionaries are **mutable** (they can be changed), **unordered** (no fixed position), and are defined using curly braces `{}`. You write keys and values like this:
+
+```python
+student = {
+    "name": "Alice",
+    "age": 20,
+    "grade": "A"
+}
+```
+
+Here, `"name"`, `"age"`, and `"grade"` are keys, and each has an associated value.
+
+### Why Use Dictionaries?
+Dictionaries have several advantages:
+- **Fast Lookups:** Finding a value by its key is almost instant, no matter how big the dictionary is.
+- **Flexible Storage:** You can store any type of data as values (numbers, strings, even other dictionaries).
+- **Clear and Readable Code:** Using keys makes your code easy to read and understand.
+- **Common for Real-World Data:** Many real-life datasets (like JSON or database records) use key-value pairs, making dictionaries very practical.
+
+### Creating Dictionaries
+You can create an empty dictionary with `{}`:
+
+```python
+empty_dict = {}
+```
+
+Or you can create a dictionary with initial data:
+
+```python
+student = {
+    "name": "Arthur",
+    "age": 20,
+    "courses": ["Math", "CS", "Physics"],
+    "graduate": False
+}
+```
+
+You can also use the `dict()` constructor:
+
+```python
+contact = dict(
+    name="John",
+    phone="555-1234",
+    email="john@example.com"
+)
+```
+
+### Accessing Values
+To access a value, use its key inside square brackets:
+
+```python
+print(student["name"])  # Output: Arthur
+```
+
+Or use the `.get()` method, which is safer—if the key doesn't exist, it won’t cause an error:
+
+```python
+print(student.get("age"))      # Output: 20
+print(student.get("grade", "Not found"))  # Output: Not found (if 'grade' key is missing)
+```
+
+### Modifying Dictionaries
+You can add new key-value pairs or change values:
+
+```python
+student["courses"] = ["Math", "CS"]
+student["age"] = 21
+student.update({"grade": "A", "age": 22})
+```
+
+### Removing Items
+You have a few options for removing data from a dictionary:
+
+- Remove a specific item by key:
+  ```python
+  removed_age = student.pop("age")
+  ```
+- Remove and return the last inserted item:
+  ```python
+  last_item = student.popitem()
+  ```
+- Delete a specific item:
+  ```python
+  del student["courses"]
+  ```
+- Remove everything:
+  ```python
+  student.clear()
+  ```
+
+### Useful Dictionary Methods
+- `keys()` – returns all keys
+- `values()` – returns all values
+- `items()` – returns all key-value pairs as tuples
+
+```python
+print(student.keys())    # dict_keys(['name', 'grade'])
+print(student.values())  # dict_values(['Alice', 'A'])
+print(student.items())   # dict_items([('name', 'Alice'), ('grade', 'A')])
+```
+
+### Iterating Through Dictionaries
+You can use loops to go through all keys, all values, or both at once:
+
+```python
+for key in student:
+    print(key)
+
+for value in student.values():
+    print(value)
+
+for key, value in student.items():
+    print(f"{key}: {value}")
+```
+
+### Nested Dictionaries
+Dictionaries can even store other dictionaries! This is useful for organizing complex data.
+
+```python
+university = {
+    "Computer Science": {
+        "Alice": {"grade": "A", "year": 2},
+        "Bob": {"grade": "B", "year": 3}
+    },
+    "Mathematics": {
+        "Charlie": {"grade": "A", "year": 1},
+        "David": {"grade": "C", "year": 4}
+    }
+}
+print(university["Computer Science"]["Alice"]["grade"])  # Output: A
+```
+
+### Dictionary Comprehensions
+Python lets you build dictionaries using a special short-hand called a **comprehension** (you will not be tested on this, but it's good to know):
+
+```python
+squares = {x: x*x for x in range(1, 6)}
+print(squares)  # Output: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+# With a condition:
+even_squares = {x: x*x for x in range(1, 11) if x % 2 == 0}
+print(even_squares)  # Output: {2: 4, 4: 16, 6: 36, 8: 64, 10: 100}
+```
+
+### When to Use Dictionaries (Real-Life Examples)
+Dictionaries are perfect for:
+- **Settings and configurations:** Store options and preferences by name.
+- **Counting items:** Like word counts or inventory.
+- **Processing JSON data:** Many web APIs return data in dictionary-like format.
+- **Database-like records:** Store multiple fields about a person, object, or event.
+- **Grouping data:** For example, group students by their courses.
+- **Representing graphs or networks:** Like mapping relationships or connections.
+
+#### Example Patterns
+**Counting items:**
+```python
+words = ["apple", "orange", "banana", "apple", "orange", "apple"]
+counter = {}
+for word in words:
+    counter[word] = counter.get(word, 0) + 1
+print(counter)  # {'apple': 3, 'orange': 2, 'banana': 1}
+```
+
+**Grouping data:**
+```python
+students = [
+    {"name": "Alice", "course": "Math", "grade": "A"},
+    {"name": "Bob", "course": "CS", "grade": "B"},
+    {"name": "Charlie", "course": "Math", "grade": "C"},
+    {"name": "David", "course": "CS", "grade": "A"}
+]
+courses = {}
+for student in students:
+    course = student["course"]
+    if course not in courses:
+        courses[course] = []
+    courses[course].append(student["name"])
+print(courses)  # {'Math': ['Alice', 'Charlie'], 'CS': ['Bob', 'David']}
+```
+
+---
+
+## Sets
+A **set** is a fundamental data structure in Python, commonly used when you need to store a collection of unique elements. Unlike lists or tuples, sets do not allow duplicate values, making them ideal for tasks where uniqueness is important, such as removing duplicates from data or performing mathematical set operations.
+
+### Key Features of Sets
+- **Unique Elements:** Each item in a set must be different. If you try to add a duplicate, it will be ignored.
+- **Unordered:** Sets do not maintain any specific order. When you display a set, the elements may appear in any sequence.
+- **Dynamic Size:** You can add or remove elements from a set at any time, so its size can change as needed.
+
+### Creating Sets
+You can create a set using curly braces `{}` or the built-in `set()` constructor:
+
+```python
+my_set = {1, 2, 3}
+# or
+my_set = set([1, 2, 3])
+```
+
+### Adding and Removing Elements
+To add a new element, use the `add()` method:
+
+```python
+my_set.add(4)  # my_set is now {1, 2, 3, 4}
+```
+
+To remove an element, use `remove()` or `discard()`. The difference is that `remove()` will raise an error if the item isn’t found, while `discard()` won’t:
+
+```python
+my_set.remove(2)      # Removes 2, raises error if 2 not found
+my_set.discard(5)     # No error if 5 is not found
+```
+
+### Checking Membership
+To check if an element is in a set, use the `in` keyword:
+
+```python
+if 3 in my_set:
+    print("3 is in the set")
+```
+
+### Set Operations
+Python sets support several powerful operations, allowing you to combine or compare collections of unique items. Suppose you have:
+
+```python
+set_a = {1, 2, 3}
+set_b = {3, 4, 5}
+```
+- **Union:** Combines all unique elements from both sets.
+    ```python
+    union_set = set_a | set_b    # {1, 2, 3, 4, 5}
+    ```
+- **Intersection:** Gets only the elements found in both sets.
+    ```python
+    intersection_set = set_a & set_b   # {3}
+    ```
+- **Difference:** Gets elements in one set but not the other.
+    ```python
+    difference_set = set_a - set_b    # {1, 2}
+    ```
+- **Symmetric Difference:** Gets elements in either set, but not both.
+    ```python
+    sym_difference_set = set_a ^ set_b   # {1, 2, 4, 5}
+    ```
+
+### Practical Use Cases
+- **Removing Duplicates:** Sets are perfect for quickly eliminating duplicate items from a list.
+    ```python
+    numbers = [1, 2, 2, 3, 4, 4, 4]
+    unique_numbers = set(numbers)   # {1, 2, 3, 4}
+    ```
+- **Membership Testing:** Checking if an item is present in a set is very efficient, especially for large collections.
+- **Mathematical Set Operations:** Use sets to solve problems involving unions, intersections, and differences, just like in math.
+
+---
+
+## Summary
+Python gives you several powerful ways to organize and manage collections of data. Three of the most important data structures are **lists**, **dictionaries**, and **sets**.
+
+- **Lists** are ordered collections that can hold any type of data. You can add, remove, or change items as needed, and you can store duplicates. Lists are perfect when you want to keep track of things in a specific order or allow repeated elements.
+- **Dictionaries** store data as pairs of keys and values, making it easy to quickly look up information by name. They’re great for organizing data that’s naturally in a labeled or “lookup” format, like a phone book, settings, or a student’s grades. Each key in a dictionary must be unique.
+- **Sets** are collections that automatically keep only unique items and do not preserve any order. Sets are best when you need to remove duplicates or check quickly if something is present in your collection. They’re also useful for performing mathematical operations like unions and intersections.
+
+Choosing the right data structure makes your code more efficient and easier to understand. As you continue learning Python, you’ll find that lists, dictionaries, and sets are essential tools for solving all kinds of real-world problems.

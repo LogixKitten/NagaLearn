@@ -1,9 +1,0 @@
-# Lesson 3: User Input & Output
-
-## Objectives:
-- Use `print()` to display output.
-- Use `input()` to receive user input.
-- Understand how to format output.
-
-## Overview:
-Interacting with users is essential in programming. Python provides the `print()` function to display output and the `input()` function to get user input. This lesson will teach you how to use both effectively.

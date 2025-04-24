@@ -1,9 +1,0 @@
-# Lesson 6: Loops
-
-## Objectives:
-- Understand the purpose of loops.
-- Learn how to use `for` and `while` loops.
-- Control loop execution using `break` and `continue`.
-
-## Overview:
-Loops allow us to execute a block of code multiple times. This lesson covers how to use `for` and `while` loops to handle repetitive tasks in Python.

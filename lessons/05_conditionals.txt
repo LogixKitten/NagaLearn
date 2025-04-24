@@ -1,9 +1,0 @@
-# Lesson 5: Conditional Statements
-
-## Objectives:
-- Learn how to use `if`, `elif`, and `else` statements.
-- Understand comparison and logical operators.
-- Write programs that make decisions.
-
-## Overview:
-Conditional statements allow programs to make decisions based on conditions. This lesson will introduce decision-making in Python using `if`, `elif`, and `else`.

@@ -1,9 +1,0 @@
-# Lesson 7: Functions & Parameters
-
-## Objectives:
-- Understand the importance of functions in programming.
-- Learn how to define and call functions.
-- Explore function parameters and return values.
-
-## Overview:
-Functions allow code reuse and better organization. This lesson introduces functions in Python, covering how to define them, pass arguments, and return values.

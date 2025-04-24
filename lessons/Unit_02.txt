@@ -1,0 +1,259 @@
+## Conditional Statements
+
+### What are Conditional Statements?
+Conditional Statements let your program make decisions. You can run different code depending on whether something is True or False.
+
+In everyday life, you use conditionals all the time. For example:
+
+    "If it’s raining, I’ll take an umbrella. Otherwise, I’ll wear sunglasses."
+
+Python works the same way—using `if`, `elif`, and `else` keywords to perform such logic.
+
+#### Basic if Statement:
+```python
+age = 18
+if age >= 18:
+    print("You can vote!")
+```
+If the condition (`age >= 18`) is true, it runs the code.
+
+#### Using else:
+```python
+age = 16
+if age >= 18:
+    print("You can vote!")
+else:
+    print("You are too young to vote.")
+```
+If the first condition is false, `else` runs instead.
+
+#### Using elif (else if):
+```python
+score = 75
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+else:
+    print("Keep working hard!")
+```
+`elif` checks another condition if the first one is false.
+
+### Comparison Operators Used in Conditions
+| Operator | Meaning                 | Example  |
+|----------|------------------------|----------|
+| ==       | Equal to               | x == 5   |
+| !=       | Not equal to           | x != 5   |
+| >        | Greater than           | x > 5    |
+| <        | Less than              | x < 5    |
+| >=       | Greater than or equal  | x >= 5   |
+| <=       | Less than or equal     | x <= 5   |
+
+### Logical Operators
+You can combine conditions using:
+- `and` – All conditions must be true
+- `or` – At least one condition must be true
+- `not` – Reverses the result (True becomes False)
+
+#### Example:
+```python
+age = 20
+has_id = True
+if age >= 18 and has_id:
+    print("Access granted.")
+```
+
+### Ternary Expressions
+Sometimes, you want to assign a value to a variable based on a condition, all in one line. Python lets you do this with a ternary expression:
+
+```python
+age = 17
+status = "Adult" if age >= 18 else "Minor"
+print(status)  # Output: Minor
+```
+
+How it works:
+- "Adult" is returned if `age >= 18` is true.
+- Otherwise, "Minor" is returned.
+
+Ternary expressions are great for setting defaults, toggling values, or any quick decision where a full if...else block would feel clunky.
+
+### Match-Case Statements
+Introduced in Python 3.10, the `match-case` statement lets you compare a value against multiple patterns, like a "switch" statement in other languages. These are extremely useful if the comparison value is known and limited to strict cases.
+
+#### Basic Example:
+```python
+day = "Monday"
+match day:
+    case "Monday":
+        print("Start of the work week.")
+    case "Friday":
+        print("Almost the weekend!")
+    case "Saturday" | "Sunday":
+        print("It's the weekend!")
+    case _:
+        print("Just another day.")
+```
+
+---
+
+## Loops
+
+### Introduction to Loops
+A loop is a tool in programming that lets you repeat a section of code multiple times. Instead of writing the same thing over and over, you use a loop to make your code shorter and easier to change. Loops are great for counting, repeating tasks, and any time you want to do something again and again.
+
+### For Loops
+A `for` loop in Python lets you repeat code for each item in a sequence. You can use for loops to go through each character in a string or to repeat something a set number of times using the `range()` function.
+
+For example, you can print each letter in a word like this:
+```python
+for letter in "Python":
+    print(letter)
+```
+This will print each letter of the word "Python" on its own line.
+
+The `range()` function gives you a sequence of numbers. For example, `range(5)` gives you the numbers 0, 1, 2, 3, and 4. Here’s how you print those numbers:
+```python
+for i in range(5):
+    print(i)
+```
+
+### While Loops
+A `while` loop repeats code as long as a condition is true. It’s useful if you don’t know how many times you’ll need to repeat. Python checks the condition each time, and stops when it becomes false.
+
+For example, this code prints numbers from 1 to 5:
+```python
+count = 1
+while count <= 5:
+    print(count)
+    count += 1
+```
+This loop keeps running as long as `count` is 5 or less. Each time, `count` goes up by 1.
+
+### Avoiding Infinite Loops
+Be careful! If your condition is always true, your loop will never stop (this is called an “infinite loop”). Make sure you change something inside your loop so the condition will eventually become false.
+
+For example, DON’T do this:
+```python
+while True:
+    print("Help! This never ends!")
+```
+This loop runs forever, because True never becomes false.
+
+### Loop Control Statements
+You can use special keywords to control loops:
+- `break` stops the loop early, even if the condition isn’t done.
+- `continue` skips to the next loop run, ignoring the rest of the code for the current run.
+
+Here’s `break` in a while loop:
+```python
+i = 1
+while i <= 10:
+    if i == 5:
+        break
+    print(i)
+    i += 1
+```
+This prints numbers 1 to 4, then stops.
+
+Here’s `continue`:
+```python
+for i in range(1, 6):
+    if i == 3:
+        continue
+    print(i)
+```
+This prints 1, 2, 4, 5 (it skips 3).
+
+### The else Clause with Loops
+Python lets you use `else` with loops. The else part runs after the loop finishes normally (not by `break`). It’s a way to run code only if the loop wasn’t stopped early.
+```python
+for i in range(3):
+    print(i)
+else:
+    print("Loop finished!")
+```
+This prints 0, 1, 2, then “Loop finished!”
+
+---
+
+## Functions
+
+### Introduction to Functions
+A function is a reusable block of code designed to perform a specific task. Functions help organize your code, prevent repetition, and make your programs easier to read and maintain. In Python, you’ll work with both built-in functions—such as `print()` and `len()`—and user-defined functions you create yourself.
+
+To define your own function, you use the `def` keyword followed by the function’s name and parentheses. The body of the function is indented beneath the header. For example, you can create a simple function to greet the user:
+```python
+def greet():
+    print("Hello, world!")
+```
+This function won’t do anything until you call it by name, using parentheses:
+```python
+greet()  # Output: Hello, world!
+```
+
+Functions often accept values called parameters. When you call the function and provide specific values, those are called arguments. Here’s how you can make your greeting function say hello to anyone:
+```python
+def greet(name):
+    print("Hello,", name)
+
+greet("Lilly")  # Output: Hello, Lilly
+greet("Bob")    # Output: Hello, Bob
+```
+
+Functions can also return a value to your program using the `return` statement. This lets you use the result of a function in other parts of your code. For example:
+```python
+def add(a, b):
+    return a + b
+
+result = add(5, 3)
+print(result)  # Output: 8
+```
+
+You can define functions with multiple parameters, and even provide default values:
+```python
+def power(base, exponent=2):
+    return base ** exponent
+
+print(power(3))      # Output: 9 (3 squared)
+print(power(3, 3))   # Output: 27 (3 cubed)
+```
+
+Variables created inside a function are local to that function, meaning they cannot be accessed outside. For instance:
+```python
+def say_hi():
+    message = "Hi!"
+    print(message)
+
+say_hi()         # Output: Hi!
+print(message)   # Error: message is not defined
+```
+
+Functions are essential for breaking your code into logical pieces, reusing work, and keeping programs understandable.
+
+### Lambda Functions
+A lambda function in Python is a quick way to create an anonymous, single-expression function. Unlike regular functions, which you define with `def` and give a name, lambda functions are typically used for short, throwaway tasks where you don’t need a full function definition.
+
+The general syntax for a lambda function is:
+```python
+lambda arguments: expression
+```
+A lambda function can take any number of arguments but must contain only a single expression. The result of this expression is returned automatically.
+
+For example, here’s a simple lambda that computes the square of a number:
+```python
+square = lambda x: x ** 2
+print(square(5))  # Output: 25
+```
+
+Lambdas can take multiple arguments as well:
+```python
+add = lambda x, y: x + y
+print(add(3, 4))  # Output: 7
+```
+
+When should you use a lambda?
+Lambdas are great for very simple, “throwaway” functions where using `def` would feel like overkill. They’re commonly used in situations where you need a small function for a very short time, and especially where you don’t plan to reuse it elsewhere.
+
+Limitations:
+- Lambdas can only contain one expression (no loops, if-else blocks, or multiple lines).

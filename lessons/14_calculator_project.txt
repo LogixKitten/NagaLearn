@@ -1,9 +1,0 @@
-# Lesson 14: Building a Simple Calculator
-
-## Objectives:
-- Apply mathematical operations in a real-world scenario.
-- Use user input to perform calculations.
-- Implement error handling for invalid input.
-
-## Overview:
-This lesson guides you through building a simple calculator that allows users to enter numbers and perform operations like addition and multiplication.

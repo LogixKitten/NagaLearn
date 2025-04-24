@@ -1,9 +1,0 @@
-# Lesson 8: Lists
-
-## Objectives:
-- Learn how to create and modify lists.
-- Access list elements using indexing.
-- Use list methods to manipulate data.
-
-## Overview:
-Lists are a fundamental data structure in Python, allowing storage of multiple values in a single variable. This lesson introduces lists, how to access elements, and common list operations.
