@@ -1,0 +1,125 @@
+## Objectives
+- Understand common types of errors in Python.
+- Learn how to use try/except blocks to handle errors.
+- Know the difference between syntax errors and runtime exceptions.
+- Gain practical strategies for debugging code.
+- Learn how to use `print()` and the `traceback` module for troubleshooting.
+
+## Why Error Handling Matters
+Even experienced programmers make mistakes! Error handling lets your program respond gracefully to mistakes or unexpected situations (like bad input or missing files) instead of crashing. Debugging is the process of finding and fixing those errors.
+
+---
+
+## Types of Errors in Python
+
+### 1. **Syntax Errors**
+- These happen when Python can't understand your code (e.g., missing a colon, typo in a keyword).
+- Detected **before** your program runs.
+- Example:
+```python
+print("Hello!"
+```
+*SyntaxError: unexpected EOF while parsing*
+
+### 2. **Runtime Exceptions**
+- Your code runs, but something goes wrong while it's running (e.g., dividing by zero, using an undefined variable).
+- Example:
+```python
+x = 5 / 0
+```
+*ZeroDivisionError: division by zero*
+
+---
+
+## Using try/except Blocks
+A **try/except** block lets you "try" code that might fail, and "catch" (handle) the error if it happens, so your program can continue or show a helpful message.
+
+**Basic syntax:**
+```python
+try:
+    # code that might cause an error
+    result = 10 / 0
+except:
+    print("Something went wrong!")
+```
+
+**Output:**
+Something went wrong!
+
+### Handling Specific Exceptions
+You can catch specific errors (like `ZeroDivisionError`, `ValueError`, `TypeError`) to handle them differently.
+
+**Example:**
+```python
+try:
+    number = int(input("Enter a number: "))
+    result = 10 / number
+    print("Result:", result)
+except ZeroDivisionError:
+    print("You can't divide by zero!")
+except ValueError:
+    print("Please enter a valid integer.")
+```
+
+---
+
+## The else and finally Clauses
+- **else**: Runs if there was **no exception** in the try block.
+- **finally**: Always runs, no matter what (good for cleanup code).
+
+**Example:**
+```python
+try:
+    f = open("file.txt")
+except FileNotFoundError:
+    print("File not found!")
+else:
+    print("File opened successfully!")
+    f.close()
+finally:
+    print("Done!")
+```
+
+---
+
+## Debugging: Finding and Fixing Errors
+
+### 1. **Read the Error Message**
+- Python tells you what went wrong and where. Read from **bottom up**.
+- The last line is usually the most important!
+
+### 2. **Use print() Statements**
+- Print out values of variables at key steps to trace your program's flow and spot where things go wrong.
+
+### 3. **Check Your Logic**
+- Are you using the correct variable names?
+- Are the values what you expect at each step?
+- Did you spell everything correctly and match parentheses/indentation?
+
+### 4. **Use the `traceback` Module**
+- For more advanced debugging, `traceback.print_exc()` can show the exact error location.
+```python
+import traceback
+try:
+    x = 1 / 0
+except:
+    traceback.print_exc()
+```
+
+---
+
+## Common Exception Types
+- **ZeroDivisionError**: Trying to divide by zero.
+- **ValueError**: Wrong value for a function (e.g., converting "hello" to int).
+- **TypeError**: Using the wrong type (e.g., adding string to number).
+- **NameError**: Using a variable that doesn't exist.
+- **FileNotFoundError**: Trying to open a file that isn't there.
+
+---
+
+## Recap
+- Errors are normal! Handle them with try/except to avoid crashing.
+- Debugging means finding and fixing errors—read the message, trace variables, and check your logic.
+- Catch specific exceptions when possible for more helpful feedback.
+- Use `print()` and `traceback` to help locate issues.
+

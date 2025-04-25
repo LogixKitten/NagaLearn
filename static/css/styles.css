@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Courier New', monospace;
     background-color: #000000;
     color:#00ff3c;
     margin: 0;
@@ -333,34 +333,20 @@ input[type="password"],
 textarea {
     background-color: black; /* Black background */
     color: #00ff3c; /* Neon green text */
-    font-family: 'Press Start 2P', cursive; /* Pixel font */
+    font-family: 'Courier New', Courier, monospace;
     font-size: 20px; /* Adjust for readability */
     border: 2px solid #00ff3c; /* Neon green outline */
     padding: 10px;
     width: 100%; /* Full width */
     outline: none; /* Remove default focus outline */
-    caret-color: transparent; /* Hide default cursor */
-    position: relative; /* Required for JS-based cursor */
+    caret-color: #00ff3c;
+    position: relative;
 }
 
-/* Remove default cursor blinking */
 input[type="text"]:focus, 
 input[type="password"]:focus, 
 textarea:focus {
     border-color: #00ff80; /* Lighter neon green when focused */
-}
-
-/* Special case for password input fields */
-input[type="password"] {
-    letter-spacing: 5px; /* Space out dots (optional) */
-    font-size: 25px; /* Bigger dots for visibility */
-}
-
-/* Remove broken pseudo-element cursor (handled by JS) */
-input[type="text"]::after, 
-input[type="password"]::after, 
-textarea::after {
-    content: none;
 }
 
 .logo {

@@ -6,7 +6,9 @@
 
     {% for exercise in exercises %}
     <div class="exercise-box">
-        <p><strong>Exercise {{ exercise.id }}:</strong> {{ exercise.question }}</p>
+        <p><strong>Exercise {{ exercise.id }}:</strong>
+            {{ exercise.question.replace('\n', '<br>')|safe }}
+        </p>        
         <textarea id="code_{{ exercise.id }}" class="code-area">{% if exercise.starter_code %}{{ exercise.starter_code }}{% endif %}</textarea>
         <button onclick="runCode(`{{ exercise.id }}`, `{{ exercise.solution|e }}`)">Run Code</button>
         <p id="output_{{ exercise.id }}" class="output"></p>
@@ -34,32 +36,38 @@
 import sys
 from io import StringIO
 
-sys.stdout = StringIO()  # Redirect stdout to capture print statements
-user_globals = {}  # Execution scope for user code
+sys.stdout = StringIO()
+user_globals = {}
 user_globals["number_list"] = [3, 8, 15, 2, 9, 10, 7, 4, 12, 5]
 user_globals["numbers"] = [4, 8, 15, 8, 23, 2, 4, 16, 15, 23, 8, 42, 7, 7, 3, 16, 23, 15, 8, 4]
+user_globals["user_code"] = ${JSON.stringify(userCode)};
+user_globals['is_correct'] = False;
 
+inputs = iter(['8', '0'])
+def input(prompt=''):
+    return next(inputs)
+user_globals['input'] = input
 
 try:
-    exec(${escapedCode}, user_globals)  # Execute user input safely
-    output = sys.stdout.getvalue().strip()  # Capture printed output
-    user_globals["output"] = output  # Store output in execution scope
-    sys.stdout = sys.__stdout__  # Restore stdout
+    exec(${escapedCode}, user_globals)
+    output = sys.stdout.getvalue().strip()
+    user_globals["output"] = output
+    sys.stdout = sys.__stdout__
     if not output:
         output = "No output produced"
 except Exception as e:
     output = f"Error: {str(e)}"
-    user_globals["output"] = output  # Store error output as well
+    user_globals["output"] = output
+    user_globals["error_message"] = str(e)
 
-# Evaluate solution dynamically within the same execution scope
-def check_solution():
-    try:
-        return eval(${JSON.stringify(correctSolution)}, user_globals)  # Evaluate within user scope
-    except Exception as e:
-        return False  # Return False if an error occurs
-
-is_correct = check_solution()
+try:
+    exec(${JSON.stringify(correctSolution)}, user_globals)    
+    is_correct = user_globals['is_correct']
+except Exception as e:
+    user_globals['is_correct'] = False
+    user_globals["error_message"] = str(e)
 `;
+
 
         // Run user code and capture output
         await window.pyodide.runPythonAsync(captureOutputCode);
@@ -70,8 +78,11 @@ is_correct = check_solution()
         // Get the result of correctness check
         let isCorrect = await window.pyodide.runPythonAsync("is_correct");
 
+        let error_message = await window.pyodide.runPythonAsync("user_globals.get('error_message', '')");
+
         // ✅ Debugging Log
         console.log("is_correct:", isCorrect);
+        console.log("error_message:", error_message);
 
         // ✅ Update Output Based on Validation
         outputElement.innerHTML = `<strong>Output:</strong> ${userOutput}<br>`;
